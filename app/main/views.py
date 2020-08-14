@@ -4,6 +4,7 @@ from . import main
 from .forms import NameForm
 from .. import db
 from ..models import User
+from ..email import send_email
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -18,8 +19,9 @@ def index():
             db.session.commit()
             session['known'] = False
             # send email to admin
-            # if current_app.config['FLASKY_ADMIN']:
-            #     send_em
+            if current_app.config['FLASKY_ADMIN']:
+                send_email(current_app.config['FLASKY_ADMIN'],
+                           'New User', 'mail/new_user', user=user)
         else:
             session['known'] = True
         session['name'] = form.name.data
