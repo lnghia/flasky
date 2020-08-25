@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from config import config
 from flask_login import LoginManager
+from .models import AnonymousUser
 
 bootstrap = Bootstrap()
 mail = Mail()
@@ -15,6 +16,7 @@ migrate = Migrate()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
+login_manager.anonymous_user = AnonymousUser
 
 
 def create_app(config_name):

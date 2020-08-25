@@ -1,0 +1,11 @@
+We received an account recovery request on Flasky for {{ user_email }}.
+
+To change your password, click the link below:
+
+{{ url_for('auth.account_recovery_confirm', token=token, _external=True) }}
+
+Sincerely,
+
+The Flasky Team
+
+Note: replies to this email address are not monitored.

@@ -9,6 +9,9 @@ from ..email import send_email
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    # print(current_app.config['MAIL_USERNAME'])
+    # print(current_app.config['MAIL_PASSWORD'])
+
     form = NameForm()
     if form.validate_on_submit():
         # ...
